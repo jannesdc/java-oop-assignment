@@ -5,4 +5,8 @@ public class Alignment {
     // variable declaration
 
     ArrayList<Genome> genomeList = new ArrayList<Genome>();
+
+    public Alignment(ArrayList<Genome> genomeList) {
+        this.genomeList = genomeList;
+    }
 }
