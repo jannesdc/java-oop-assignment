@@ -1,3 +1,5 @@
+package Employees;
+
 public abstract class Employee {
     /**
      *     This class has the following variables:
@@ -10,7 +12,7 @@ public abstract class Employee {
      *         and is not a decimal number.</li>
      *     </ul>
      *     Every type of employee has a first, last name and their years of experience,
-     *     therefore they are variables of the superclass Employee.
+     *     therefore they are variables of the superclass Employees.Employee.
      *     <p>
      *     This class does not have any methods other than getters/setters for its variables.
      *     But provides abstraction of the variables that are shared between all types of employees.
@@ -56,6 +58,9 @@ public abstract class Employee {
         this.yearsOfExperience = yearsOfExperience;
     }
 
-
+    @Override
+    public String toString() {
+        return getFullName();
+    }
 }
 

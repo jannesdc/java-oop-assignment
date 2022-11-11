@@ -6,19 +6,19 @@ public class Genome {
     // a genome is defined by an identifier/name and the "genome" which is renamed to nucleotideList,
     // so it is easily distinguishable from the class itself.
     String identifier;
-    ArrayList <Character> nucleotideList = new ArrayList<Character>();
+    String nucleotides;
 
-    public Genome(String identifier, ArrayList<Character> nucleotideList) {
+    public Genome(String identifier, String nucleotides) {
         this.identifier = identifier;
-        this.nucleotideList = nucleotideList;
+        this.nucleotides = nucleotides;
     }
 
     public String getIdentifier() {
         return identifier;
     }
 
-    public ArrayList<Character> getNucleotideList() {
-        return nucleotideList;
+    public String getNucleotides() {
+        return nucleotides;
     }
 
     // override of the toString method which prints only the identifier/name of the associated genome.

@@ -1,34 +1,25 @@
+import Employees.*;
+
 import java.io.*;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Properties;
 import java.util.Scanner;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import java.util.regex.PatternSyntaxException;
-
 public class Main {
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) {
 
         String[] configEntries = readConfig();
         File teamFile = new File("src\\" + configEntries[0]);
         File fastaFile = new File("src\\" + configEntries[1]);
-        Scanner scan = new Scanner(teamFile);
-        while (scan.hasNextLine()) {
-            String data = scan.nextLine();
-            System.out.println(data);
+
+        ArrayList<Employee> employeeArrayList = readTeamFile(teamFile);
+        ArrayList<Genome> genomeArrayList = readFastaFile(fastaFile);
+
+        for (Employee e : employeeArrayList) {
+            System.out.println(e);
         }
 
-        try {
-            Pattern pattern = Pattern.compile("^>.*");
-            Matcher matcher = pattern.matcher("test");
-            while (matcher.find()) {
-                for (int i = 1 ; i < matcher.groupCount() ; i++) {
-                    System.out.println(matcher.group(i));
-                }
-            }
-        } catch (PatternSyntaxException e) {
-            System.out.println("Syntax error in the regular expression.");
+        for (Genome g : genomeArrayList) {
+            System.out.println(g);
         }
 
     }
@@ -39,7 +30,7 @@ public class Main {
         // variable declaration
         Properties prop = new Properties();
         InputStream config = null;
-        String configEntries[] = new String[2];
+        String[] configEntries = new String[2];
 
         try {
             config = new FileInputStream("src\\config.properties");
@@ -63,5 +54,73 @@ public class Main {
             e.printStackTrace();
         }
         return configEntries;
+    }
+
+    static ArrayList<Employee> readTeamFile(File teamFile) {
+
+        ArrayList<Employee> employeeArrayList = new ArrayList<Employee>();
+        String firstName;
+        String lastName;
+        int yearsOfExperience;
+        Employee newEmployee;
+
+        try {
+            Scanner sc = new Scanner(teamFile);
+
+            while (sc.hasNextLine()) {
+
+                switch (sc.next()) {
+                    case "TeamLead" -> {
+                        firstName = sc.next();
+                        lastName = sc.next();
+                        yearsOfExperience = Integer.parseInt(sc.next());
+                        newEmployee = new TeamLead(firstName, lastName, yearsOfExperience);
+                    }
+                    case "Bioinformatician" -> {
+                        firstName = sc.next();
+                        lastName = sc.next();
+                        yearsOfExperience = Integer.parseInt(sc.next());
+                        newEmployee = new Bioinformatician(firstName, lastName, yearsOfExperience);
+                    }
+                    case "TechnicalSupport" -> {
+                        firstName = sc.next();
+                        lastName = sc.next();
+                        yearsOfExperience = Integer.parseInt(sc.next());
+                        newEmployee = new TechnicalSupport(firstName, lastName, yearsOfExperience);
+                    }
+                    default -> newEmployee = null;
+                }
+                if (newEmployee == null) {
+
+                }
+                employeeArrayList.add(newEmployee);
+            }
+
+        } catch (FileNotFoundException e) {
+            System.out.println("Specified file was not found.");
+        }
+        return employeeArrayList;
+    }
+
+    static ArrayList<Genome> readFastaFile(File fastaFile) {
+
+        String identifier;
+        String nucleotide;
+        Genome newGenome;
+        ArrayList<Genome> genomeArrayList = new ArrayList<Genome>();
+
+        try {
+            Scanner sc = new Scanner(fastaFile);
+            while (sc.hasNext()) {
+                identifier = sc.next();
+                nucleotide = sc.next();
+                newGenome = new Genome(identifier, nucleotide);
+                genomeArrayList.add(newGenome);
+            }
+            sc.close();
+            return genomeArrayList;
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

@@ -2,13 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8b7ca82c-3d72-4409-9d81-31e57870a8b2" name="Changes" comment="Start of project">
-      <change afterPath="$PROJECT_DIR$/src/config.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/hiv.fasta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/team.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Employees/TeamLead.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Employees/TechnicalSupport.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Alignment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Alignment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Employee.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/HelperClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HelperClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Bioinformatician.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Employees/Bioinformatician.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Employees/Employee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Genome.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Genome.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -25,6 +25,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -39,6 +40,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2"
@@ -106,6 +108,10 @@
         <breakpoint enabled="true" type="java-exception">
           <properties class="java.io.FileNotFoundException" package="java.io" />
           <option name="timeStamp" value="1" />
+        </breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.util.NoSuchElementException" package="java.util" />
+          <option name="timeStamp" value="2" />
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>
