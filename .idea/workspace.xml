@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8b7ca82c-3d72-4409-9d81-31e57870a8b2" name="Changes" comment="sure buddy">
-      <change afterPath="$PROJECT_DIR$/src/Genetics/Alignment.java" afterDir="false" />
+    <list default="true" id="8b7ca82c-3d72-4409-9d81-31e57870a8b2" name="Changes" comment="feature: Alignment score method">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Alignment.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Employees/Bioinformatician.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Staff/Bioinformatician.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Employees/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Staff/Employee.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Employees/TeamLead.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Staff/TeamLead.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Employees/TechnicalSupport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Staff/TechnicalSupport.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Genome.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Genetics/Genome.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Genetics/Alignment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Genetics/Alignment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Genetics/Genome.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Genetics/Genome.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HelperClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HelperClass.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Staff/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Staff/Employee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Staff/TechnicalSupport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Staff/TechnicalSupport.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,7 +89,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668197291291</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="feature: Alignment score method">
+      <created>1668259826624</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1668259826624</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -109,7 +114,8 @@
     <MESSAGE value="init" />
     <MESSAGE value="Start of project" />
     <MESSAGE value="sure buddy" />
-    <option name="LAST_COMMIT_MESSAGE" value="sure buddy" />
+    <MESSAGE value="feature: Alignment score method" />
+    <option name="LAST_COMMIT_MESSAGE" value="feature: Alignment score method" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

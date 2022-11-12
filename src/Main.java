@@ -18,6 +18,9 @@ public class Main {
         Alignment hiv = new Alignment(genomeArrayList);
         System.out.println(hiv.score());
 
+        Alignment SNPhiv = new Alignment(hiv.snpAlign());
+        System.out.println(SNPhiv.score());
+
     }
 
     // method that reads the config.properties file and returns an Arraylist that reads all relevant properties

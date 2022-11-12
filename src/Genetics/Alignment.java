@@ -10,39 +10,112 @@ public class Alignment {
     int referenceGenomePosition;
     Genome referenceGenome;
 
+    /**
+     * First constructor of an {@code Alignment} in which the reference genome is the first genome in the
+     * genomeList.
+     *
+     * @param genomeList ArrayList of all the genomes in an alignment
+     */
     public Alignment(ArrayList<Genome> genomeList) {
         this.genomeList = genomeList;
         this.referenceGenomePosition = 0;
         this.referenceGenome = genomeList.get(referenceGenomePosition);
     }
 
+    /**
+     * Second, overloaded constructor of an {@code Alignment} in which the {@code referenceGenomePosition} is not
+     * the default first genome, but a genome specified by the user.
+     *
+     * @param genomeList ArrayList of all the genomes in an alignment
+     * @param referenceGenomePosition Position of the reference genome in the genomeList
+     */
     public Alignment(ArrayList<Genome> genomeList, int referenceGenomePosition) {
         this.genomeList = genomeList;
         this.referenceGenomePosition = referenceGenomePosition;
         this.referenceGenome = genomeList.get(referenceGenomePosition);
     }
 
+    /**
+     * @return The genomeList of the alignment.
+     */
     public ArrayList<Genome> getGenomeList() {
         return genomeList;
     }
 
+    /**
+     * @return The position of the reference genome in the genomeList of the alignment
+     */
     public int getReferenceGenomePosition() {
         return referenceGenomePosition;
     }
 
+    /**
+     * Returns the identifier and nucleotide sequence as Strings of a genome which is defined by the method parameter
+     * genomePosition.
+     *
+     * @param genomePosition The position (Integer) of which genome out of the {@code genomeList} that needs to be
+     *                       returned.
+     * @return The identifier and nucleotide sequence over two lines
+     */
+    public String printGenome(int genomePosition) {
+        return genomeList.get(genomePosition).toString();
+    }
+
+    /**
+     * @param genomeList ArrayList of all the genomes in the alignment
+     */
     public void setGenomeList(ArrayList<Genome> genomeList) {
         this.genomeList = genomeList;
     }
 
+    /**
+     * Sets a new reference genome position around which the SNP alignment is made and the score is calculated.
+     *
+     * @param referenceGenomePosition Position of the reference genome in the genome list.
+     */
     public void setReferenceGenomePosition(int referenceGenomePosition) {
         this.referenceGenomePosition = referenceGenomePosition;
     }
 
+    /**
+     * This method calculates the "difference score" of an alignment. Which is the number of different characters
+     * of each other genome compared to the reference genome. The sum of all these differences is the difference score.
+     *
+     * @return Difference score of an alignment
+     */
     public int score() {
+
+        ArrayList<Genome> SNPGenomeList = snpAlign();
+        char[] comparisonArray;
+        int differenceScore = 0;
+
+        for (int i = 0; i < genomeList.size(); i++) {
+            if (i != referenceGenomePosition) {
+                comparisonArray = SNPGenomeList.get(i).getNucleotideArray();
+            } else {
+                continue;
+            }
+            for (char c : comparisonArray) {
+                if (c != '.') {
+                    differenceScore = differenceScore + 1;
+                }
+            }
+        }
+        return differenceScore;
+    }
+
+    /**
+     * Converts the current standard alignment to a SNiP or SNP alignment. This changes the nucleotides sequence
+     * of all genomes in the alignment so that all nucleotides that are the same as the reference genome are
+     * replaced by dots, and all differences compared to the reference genome are kept as a character.
+     *
+     * @return {@code ArrayList<Genome>} containing a SNiP alignment of the standard alignment.
+     */
+    public ArrayList<Genome> snpAlign() {
 
         char[] referenceArray = referenceGenome.getNucleotideArray();
         char[] comparisonArray;
-        int differenceScore = 0;
+        ArrayList<Genome> SNPGenomeList = genomeList;
 
         for (int i = 0; i < genomeList.size(); i++) {
             if (i != referenceGenomePosition) {
@@ -51,12 +124,13 @@ public class Alignment {
                 continue;
             }
             for (int j = 0; j < comparisonArray.length; j++) {
-                if (referenceArray[j] != comparisonArray[j]) {
-                    differenceScore = differenceScore + 1;
+                if (referenceArray[j] == comparisonArray[j]) {
+                    comparisonArray[j] = '.';
                 }
             }
+            SNPGenomeList.get(i).setNucleotides(comparisonArray);
         }
-
-        return differenceScore;
+        return SNPGenomeList;
     }
+
 }
