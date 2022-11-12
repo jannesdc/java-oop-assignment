@@ -205,8 +205,8 @@ public class Alignment {
      * Method to replace a given sequence of nucleotides with another given sequence of nucleotides at a given
      * position in the genomeList.
      *
-     * @param oldSequence old String sequence that will be replaced by {@code newSequence}
-     * @param newSequence new String sequence that will replace {@code oldSequence}
+     * @param oldSequence    old String sequence that will be replaced by {@code newSequence}
+     * @param newSequence    new String sequence that will replace {@code oldSequence}
      * @param genomePosition the position of the genome where the replacement will occur
      */
     public void replaceNucleotidesInGenome(String oldSequence, String newSequence, int genomePosition) {
@@ -216,6 +216,50 @@ public class Alignment {
 
         Genome newGenome = new Genome(identifier, replacedString);
         genomeList.set(genomePosition, newGenome);
+    }
+
+    /**
+     * Method to add a new genome at the end of the genomeList of the alignment.
+     *
+     * @param genome genome that will be added to the genomeList
+     */
+    public void addGenome(Genome genome) {
+        genomeList.add(genome);
+    }
+
+    /**
+     * Method to add a new genome at the end of the genomeList of the alignment, but with a given identifier and
+     * sequence of nucleotides instead of a Genome object.
+     *
+     * @param identifier  name/identifier of the new genome
+     * @param nucleotides nucleotide sequence of the new genome
+     */
+    public void addGenome(String identifier, String nucleotides) {
+        Genome newGenome = new Genome(identifier, nucleotides);
+        genomeList.add(newGenome);
+    }
+
+    /**
+     * Method to add a new genome at a given position in the genomeList of the alignment.
+     *
+     * @param genome   genome that will be added to the genomeList
+     * @param position position at which the new genome will be added to genomeList
+     */
+    public void addGenome(Genome genome, int position) {
+        genomeList.add(position, genome);
+    }
+
+    /**
+     * Method to add a new genome at a given position in the genomeList of the alignment,
+     * but with a given identifier and sequence of nucleotides instead of a Genome object.
+     *
+     * @param identifier name/identifier of the new genome
+     * @param nucleotides nucleotide sequence of the new genome
+     * @param position position at which the new genome will be added to genomeList
+     */
+    public void addGenome(String identifier, String nucleotides, int position) {
+        Genome newGenome = new Genome(identifier, nucleotides);
+        genomeList.add(position, newGenome);
     }
 
 }
