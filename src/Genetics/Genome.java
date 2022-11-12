@@ -1,7 +1,6 @@
 package Genetics;
 
-
-public class Genome {
+public class Genome implements Cloneable {
 
     // variable declarations
     String identifier;
@@ -70,5 +69,22 @@ public class Genome {
     @Override
     public String toString() {
         return identifier + "\n" + nucleotides;
+    }
+
+
+    /**
+     * Method to facilitate deep cloning of genome objects
+     *
+     * @return cloned Genome object
+     */
+    @Override
+    public Object clone() {
+        Genome clonedGenome = null;
+        try {
+            clonedGenome = (Genome) super.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        return clonedGenome;
     }
 }

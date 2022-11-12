@@ -18,6 +18,11 @@ public class Main {
         Alignment hiv = new Alignment(genomeArrayList);
         System.out.println(hiv.score());
 
+        ArrayList<Genome> test = hiv.searchNucleotideSequence("TTTCCTG");
+        for (Genome g : test) {
+            System.out.println(g);
+        }
+
         Alignment SNPhiv = new Alignment(hiv.snpAlign());
         System.out.println(SNPhiv.score());
 

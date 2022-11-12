@@ -115,7 +115,11 @@ public class Alignment {
 
         char[] referenceArray = referenceGenome.getNucleotideArray();
         char[] comparisonArray;
-        ArrayList<Genome> SNPGenomeList = genomeList;
+        ArrayList<Genome> SNPGenomeList = new ArrayList<Genome>();
+
+        for (Genome g : genomeList) {
+            SNPGenomeList.add((Genome) g.clone());
+        }
 
         for (int i = 0; i < genomeList.size(); i++) {
             if (i != referenceGenomePosition) {
@@ -131,6 +135,25 @@ public class Alignment {
             SNPGenomeList.get(i).setNucleotides(comparisonArray);
         }
         return SNPGenomeList;
+    }
+
+    /**
+     * Method that takes a String sequence and searches all genomes in the alignment for that sequence
+     * and returns all genomes that have a match for the given String.
+     *
+     * @param sequence String to search for in the nucleotide sequence
+     * @return ArrayList of all genomes that include the given sequence
+     */
+    public ArrayList<Genome> searchNucleotideSequence(String sequence) {
+
+        ArrayList<Genome> resultArraylist = new ArrayList<Genome>();
+
+        for (Genome g : genomeList) {
+            if (g.getNucleotides().contains(sequence)) {
+                resultArraylist.add(g);
+            }
+        }
+        return resultArraylist;
     }
 
 }
