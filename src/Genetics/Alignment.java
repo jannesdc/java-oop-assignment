@@ -26,7 +26,7 @@ public class Alignment {
      * Second, overloaded constructor of an {@code Alignment} in which the {@code referenceGenomePosition} is not
      * the default first genome, but a genome specified by the user.
      *
-     * @param genomeList ArrayList of all the genomes in an alignment
+     * @param genomeList              ArrayList of all the genomes in an alignment
      * @param referenceGenomePosition Position of the reference genome in the genomeList
      */
     public Alignment(ArrayList<Genome> genomeList, int referenceGenomePosition) {
@@ -159,11 +159,11 @@ public class Alignment {
     /**
      * First replaceGenome method (overloaded) that takes a genome as a parameter to replace the current genome at genomePosition.
      *
-     * @param genome {@code Genome} that will replace the current {@code Genome} at {@code genomePosition}
+     * @param genome         {@code Genome} that will replace the current {@code Genome} at {@code genomePosition}
      * @param genomePosition the position in {@code genomeList} where the old {@code Genome} will be replaced
      */
     public void replaceGenome(Genome genome, int genomePosition) {
-        genomeList.set(genomePosition,genome);
+        genomeList.set(genomePosition, genome);
     }
 
     /**
@@ -171,12 +171,51 @@ public class Alignment {
      * sequence to replace the current {@code Genome} at {@code genomePosition}
      *
      * @param genomeIdentifier identifier of the new {@code Genome}
-     * @param nucleotides nucleotide sequence of the new {@code Genome}
-     * @param genomePosition the position in {@code genomeList} where the old {@code Genome} will be replaced.
+     * @param nucleotides      nucleotide sequence of the new {@code Genome}
+     * @param genomePosition   the position in {@code genomeList} where the old {@code Genome} will be replaced.
      */
     public void replaceGenome(String genomeIdentifier, String nucleotides, int genomePosition) {
         Genome replacementGenome = new Genome(genomeIdentifier, nucleotides);
         genomeList.set(genomePosition, replacementGenome);
+    }
+
+    /**
+     * Method that replaces all instances of the string {@code oldSequence} in the alignment by a new
+     * sequence of nucleotides.
+     *
+     * @param oldSequence old String sequence that will be replaced by {@code newSequence}
+     * @param newSequence new String sequence that will replace {@code oldSequence}
+     */
+    public void replaceNucleotidesInAlignment(String oldSequence, String newSequence) {
+        String identifier;
+        String toReplace;
+        String replacedString;
+
+        for (int i = 0; i < genomeList.size(); i++) {
+            identifier = genomeList.get(i).getIdentifier();
+            toReplace = genomeList.get(i).getNucleotides();
+            replacedString = toReplace.replaceAll(oldSequence, newSequence);
+
+            Genome newGenome = new Genome(identifier, replacedString);
+            genomeList.set(i, newGenome);
+        }
+    }
+
+    /**
+     * Method to replace a given sequence of nucleotides with another given sequence of nucleotides at a given
+     * position in the genomeList.
+     *
+     * @param oldSequence old String sequence that will be replaced by {@code newSequence}
+     * @param newSequence new String sequence that will replace {@code oldSequence}
+     * @param genomePosition the position of the genome where the replacement will occur
+     */
+    public void replaceNucleotidesInGenome(String oldSequence, String newSequence, int genomePosition) {
+        String identifier = genomeList.get(genomePosition).getIdentifier();
+        String toReplace = genomeList.get(genomePosition).getNucleotides();
+        String replacedString = toReplace.replaceAll(oldSequence, newSequence);
+
+        Genome newGenome = new Genome(identifier, replacedString);
+        genomeList.set(genomePosition, newGenome);
     }
 
 }

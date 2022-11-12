@@ -1,6 +1,7 @@
 import Genetics.*;
 import Staff.*;
 
+import javax.sound.midi.SysexMessage;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Properties;
@@ -17,11 +18,9 @@ public class Main {
 
         Alignment hiv = new Alignment(genomeArrayList);
         System.out.println(hiv.score());
-
-        ArrayList<Genome> test = hiv.searchNucleotideSequence("TTTCCTG");
-        for (Genome g : test) {
-            System.out.println(g);
-        }
+        System.out.println(hiv.printGenome(0));
+        hiv.replaceNucleotidesInAlignment("TTT", "CCC");
+        System.out.println(hiv.printGenome(0));
 
         Alignment SNPhiv = new Alignment(hiv.snpAlign());
         System.out.println(SNPhiv.score());
