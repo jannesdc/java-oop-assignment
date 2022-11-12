@@ -19,7 +19,7 @@ public class Main {
         Alignment hiv = new Alignment(genomeArrayList);
         System.out.println(hiv.score());
         System.out.println(hiv.printGenome(0));
-        hiv.replaceNucleotidesInAlignment("TTT", "CCC");
+        hiv.removeGenome(hiv.getGenomeList().get(0));
         System.out.println(hiv.printGenome(0));
 
         Alignment SNPhiv = new Alignment(hiv.snpAlign());

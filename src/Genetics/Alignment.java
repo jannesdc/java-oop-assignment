@@ -253,13 +253,38 @@ public class Alignment {
      * Method to add a new genome at a given position in the genomeList of the alignment,
      * but with a given identifier and sequence of nucleotides instead of a Genome object.
      *
-     * @param identifier name/identifier of the new genome
+     * @param identifier  name/identifier of the new genome
      * @param nucleotides nucleotide sequence of the new genome
-     * @param position position at which the new genome will be added to genomeList
+     * @param position    position at which the new genome will be added to genomeList
      */
     public void addGenome(String identifier, String nucleotides, int position) {
         Genome newGenome = new Genome(identifier, nucleotides);
         genomeList.add(position, newGenome);
+    }
+
+    /**
+     * @param position remove the genome at this position
+     */
+    public void removeGenome(int position) {
+        genomeList.remove(position);
+    }
+
+    /**
+     * @param genome remove the given genome from the genomeList
+     */
+    public void removeGenome(Genome genome) {
+        genomeList.remove(genome);
+    }
+
+    /**
+     * @param identifier remove the genome with the given identifier/name
+     */
+    public void removeGenome(String identifier) {
+        for (Genome g : genomeList) {
+            if (identifier.equals(g.getIdentifier())) {
+                genomeList.remove(g);
+            }
+        }
     }
 
 }

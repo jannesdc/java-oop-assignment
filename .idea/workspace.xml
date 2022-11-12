@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8b7ca82c-3d72-4409-9d81-31e57870a8b2" name="Changes" comment="feature: replaceNucleotides methods implemented for entire Alignment or a specific Genome">
+    <list default="true" id="8b7ca82c-3d72-4409-9d81-31e57870a8b2" name="Changes" comment="feature: addGenome method for Alignment">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Genetics/Alignment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Genetics/Alignment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,7 +120,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668279930626</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="feature: addGenome method for Alignment">
+      <created>1668280524992</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1668280524992</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -141,7 +150,8 @@
     <MESSAGE value="feature: search for nucleotide sequences in an Alignment" />
     <MESSAGE value="feature: replaceGenome method implemented" />
     <MESSAGE value="feature: replaceNucleotides methods implemented for entire Alignment or a specific Genome" />
-    <option name="LAST_COMMIT_MESSAGE" value="feature: replaceNucleotides methods implemented for entire Alignment or a specific Genome" />
+    <MESSAGE value="feature: addGenome method for Alignment" />
+    <option name="LAST_COMMIT_MESSAGE" value="feature: addGenome method for Alignment" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
