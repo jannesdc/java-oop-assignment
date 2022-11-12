@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8b7ca82c-3d72-4409-9d81-31e57870a8b2" name="Changes" comment="feature: Alignment snpAlign method&#10;comments added on all methods of all classes">
+    <list default="true" id="8b7ca82c-3d72-4409-9d81-31e57870a8b2" name="Changes" comment="feature: search for nucleotide sequences in an Alignment">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Genetics/Alignment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Genetics/Alignment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Genetics/Genome.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Genetics/Genome.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,7 +98,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668271336589</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="feature: search for nucleotide sequences in an Alignment">
+      <created>1668277144963</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1668277144963</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -120,7 +125,8 @@
     <MESSAGE value="sure buddy" />
     <MESSAGE value="feature: Alignment score method" />
     <MESSAGE value="feature: Alignment snpAlign method&#10;comments added on all methods of all classes" />
-    <option name="LAST_COMMIT_MESSAGE" value="feature: Alignment snpAlign method&#10;comments added on all methods of all classes" />
+    <MESSAGE value="feature: search for nucleotide sequences in an Alignment" />
+    <option name="LAST_COMMIT_MESSAGE" value="feature: search for nucleotide sequences in an Alignment" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -133,21 +139,6 @@
           <properties class="java.util.NoSuchElementException" package="java.util" />
           <option name="timeStamp" value="2" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Genetics/Alignment.java</url>
-          <line>87</line>
-          <option name="timeStamp" value="37" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Genetics/Alignment.java</url>
-          <line>88</line>
-          <option name="timeStamp" value="38" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Genetics/Alignment.java</url>
-          <line>89</line>
-          <option name="timeStamp" value="39" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

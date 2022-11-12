@@ -156,4 +156,27 @@ public class Alignment {
         return resultArraylist;
     }
 
+    /**
+     * First replaceGenome method (overloaded) that takes a genome as a parameter to replace the current genome at genomePosition.
+     *
+     * @param genome {@code Genome} that will replace the current {@code Genome} at {@code genomePosition}
+     * @param genomePosition the position in {@code genomeList} where the old {@code Genome} will be replaced
+     */
+    public void replaceGenome(Genome genome, int genomePosition) {
+        genomeList.set(genomePosition,genome);
+    }
+
+    /**
+     * Second replaceGenome method (overloaded) that takes a {@code genomeIdentifier} and a {@code nucleotides}
+     * sequence to replace the current {@code Genome} at {@code genomePosition}
+     *
+     * @param genomeIdentifier identifier of the new {@code Genome}
+     * @param nucleotides nucleotide sequence of the new {@code Genome}
+     * @param genomePosition the position in {@code genomeList} where the old {@code Genome} will be replaced.
+     */
+    public void replaceGenome(String genomeIdentifier, String nucleotides, int genomePosition) {
+        Genome replacementGenome = new Genome(genomeIdentifier, nucleotides);
+        genomeList.set(genomePosition, replacementGenome);
+    }
+
 }
