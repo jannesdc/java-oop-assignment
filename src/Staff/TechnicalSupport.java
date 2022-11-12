@@ -1,4 +1,4 @@
-package Employees;
+package Staff;
 
 public class TechnicalSupport extends Employee {
     public TechnicalSupport(String firstName, String lastName, int yearsOfExperience) {

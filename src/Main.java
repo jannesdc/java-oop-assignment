@@ -1,4 +1,5 @@
-import Employees.*;
+import Genetics.*;
+import Staff.*;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -14,13 +15,8 @@ public class Main {
         ArrayList<Employee> employeeArrayList = readTeamFile(teamFile);
         ArrayList<Genome> genomeArrayList = readFastaFile(fastaFile);
 
-        for (Employee e : employeeArrayList) {
-            System.out.println(e);
-        }
-
-        for (Genome g : genomeArrayList) {
-            System.out.println(g);
-        }
+        Alignment hiv = new Alignment(genomeArrayList);
+        System.out.println(hiv.score());
 
     }
 

@@ -1,4 +1,4 @@
-package Employees;
+package Staff;
 
 public class Bioinformatician extends Employee {
 

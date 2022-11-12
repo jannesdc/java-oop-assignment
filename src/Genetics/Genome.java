@@ -1,3 +1,5 @@
+package Genetics;
+
 import java.util.ArrayList;
 
 public class Genome {
@@ -19,6 +21,10 @@ public class Genome {
 
     public String getNucleotides() {
         return nucleotides;
+    }
+
+    public char[] getNucleotideArray() {
+        return nucleotides.toCharArray();
     }
 
     // override of the toString method which prints only the identifier/name of the associated genome.
