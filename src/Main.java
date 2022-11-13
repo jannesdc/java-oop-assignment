@@ -19,7 +19,7 @@ public class Main {
         Alignment hiv = new Alignment(genomeArrayList);
         System.out.println(hiv.score());
         System.out.println(hiv.printGenome(0));
-        hiv.removeGenome(hiv.getGenomeList().get(0));
+        hiv.removeGenomes(">1990.U.CD.90.90CD121E12");
         System.out.println(hiv.printGenome(0));
 
         Alignment SNPhiv = new Alignment(hiv.snpAlign());

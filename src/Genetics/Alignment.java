@@ -277,13 +277,17 @@ public class Alignment {
     }
 
     /**
-     * @param identifier remove the genome with the given identifier/name
+     *  @param identifier remove all the genomes with the given genome identifier/name
      */
-    public void removeGenome(String identifier) {
+    public void removeGenomes(String identifier) {
+        ArrayList<Genome> genomesToDelete = new ArrayList<Genome>();
         for (Genome g : genomeList) {
             if (identifier.equals(g.getIdentifier())) {
-                genomeList.remove(g);
+                genomesToDelete.add(g);
             }
+        }
+        for (Genome g : genomesToDelete) {
+            genomeList.remove(g);
         }
     }
 
