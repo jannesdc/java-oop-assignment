@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8b7ca82c-3d72-4409-9d81-31e57870a8b2" name="Changes" comment="feature: removeGenome methods for Alignment">
+    <list default="true" id="8b7ca82c-3d72-4409-9d81-31e57870a8b2" name="Changes" comment="fix: removeGenomes now works without errors">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Genetics/Alignment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Genetics/Alignment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,7 +133,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668282219484</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="fix: removeGenomes now works without errors">
+      <created>1668330562819</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1668330562819</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -159,7 +165,8 @@
     <MESSAGE value="feature: replaceNucleotides methods implemented for entire Alignment or a specific Genome" />
     <MESSAGE value="feature: addGenome method for Alignment" />
     <MESSAGE value="feature: removeGenome methods for Alignment" />
-    <option name="LAST_COMMIT_MESSAGE" value="feature: removeGenome methods for Alignment" />
+    <MESSAGE value="fix: removeGenomes now works without errors" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: removeGenomes now works without errors" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

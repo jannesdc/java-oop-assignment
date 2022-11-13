@@ -277,7 +277,7 @@ public class Alignment {
     }
 
     /**
-     *  @param identifier remove all the genomes with the given genome identifier/name
+     * @param identifier remove all the genomes with the given genome identifier/name
      */
     public void removeGenomes(String identifier) {
         ArrayList<Genome> genomesToDelete = new ArrayList<Genome>();
