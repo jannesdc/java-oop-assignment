@@ -36,6 +36,13 @@ public class Alignment {
     }
 
     /**
+     * Constructor method that makes the constructor of SNPAlignment possible. It is made protected, so it can only be
+     * accessed from its subtype SNPAlignment.
+     */
+    protected Alignment() {
+    }
+
+    /**
      * @return The genomeList of the alignment.
      */
     public ArrayList<Genome> getGenomeList() {
@@ -47,6 +54,35 @@ public class Alignment {
      */
     public int getReferenceGenomePosition() {
         return referenceGenomePosition;
+    }
+
+    /**
+     * @return The reference genome of the alignment
+     */
+    public Genome getReferenceGenome() {
+        return referenceGenome;
+    }
+
+    public Genome getGenome(int genomePosition) {
+        return genomeList.get(genomePosition);
+    }
+
+    /**
+     * @param genomeList ArrayList of all the genomes in the alignment
+     */
+    public void setGenomeList(ArrayList<Genome> genomeList) {
+        this.genomeList = genomeList;
+    }
+
+    /**
+     * Sets a new reference genome position around which the SNP alignment is made and the score is calculated.
+     * This method also changes the referenceGenome itself.
+     *
+     * @param newReferenceGenomePosition Position of the reference genome in the genome list.
+     */
+    public void setReferenceGenomePosition(int newReferenceGenomePosition) {
+        this.referenceGenomePosition = newReferenceGenomePosition;
+        this.referenceGenome = genomeList.get(newReferenceGenomePosition);
     }
 
     /**
@@ -62,22 +98,6 @@ public class Alignment {
     }
 
     /**
-     * @param genomeList ArrayList of all the genomes in the alignment
-     */
-    public void setGenomeList(ArrayList<Genome> genomeList) {
-        this.genomeList = genomeList;
-    }
-
-    /**
-     * Sets a new reference genome position around which the SNP alignment is made and the score is calculated.
-     *
-     * @param referenceGenomePosition Position of the reference genome in the genome list.
-     */
-    public void setReferenceGenomePosition(int referenceGenomePosition) {
-        this.referenceGenomePosition = referenceGenomePosition;
-    }
-
-    /**
      * This method calculates the "difference score" of an alignment. Which is the number of different characters
      * of each other genome compared to the reference genome. The sum of all these differences is the difference score.
      *
@@ -85,18 +105,18 @@ public class Alignment {
      */
     public int score() {
 
-        ArrayList<Genome> SNPGenomeList = snpAlign();
+        char[] referenceArray = referenceGenome.getNucleotideArray();
         char[] comparisonArray;
         int differenceScore = 0;
 
         for (int i = 0; i < genomeList.size(); i++) {
             if (i != referenceGenomePosition) {
-                comparisonArray = SNPGenomeList.get(i).getNucleotideArray();
+                comparisonArray = genomeList.get(i).getNucleotideArray();
             } else {
                 continue;
             }
-            for (char c : comparisonArray) {
-                if (c != '.') {
+            for (int j = 0; j < comparisonArray.length; j++) {
+                if (referenceArray[j] != comparisonArray[j]) {
                     differenceScore = differenceScore + 1;
                 }
             }
@@ -111,7 +131,7 @@ public class Alignment {
      *
      * @return {@code ArrayList<Genome>} containing a SNiP alignment of the standard alignment.
      */
-    public ArrayList<Genome> snpAlign() {
+    public SNPAlignment snpAlign() {
 
         char[] referenceArray = referenceGenome.getNucleotideArray();
         char[] comparisonArray;
@@ -134,7 +154,8 @@ public class Alignment {
             }
             SNPGenomeList.get(i).setNucleotides(comparisonArray);
         }
-        return SNPGenomeList;
+        SNPAlignment newSNPAlignment = new SNPAlignment(this,SNPGenomeList);
+        return newSNPAlignment;
     }
 
     /**
@@ -187,6 +208,11 @@ public class Alignment {
      * @param newSequence new String sequence that will replace {@code oldSequence}
      */
     public void replaceNucleotidesInAlignment(String oldSequence, String newSequence) {
+        if (oldSequence.length() != newSequence.length()) {
+            throw new RuntimeException("The nucleotide sequences must be the same length, so that the " +
+                    "total length of the nucleotide sequence is not changed.");
+        }
+
         String identifier;
         String toReplace;
         String replacedString;
@@ -210,6 +236,11 @@ public class Alignment {
      * @param genomePosition the position of the genome where the replacement will occur
      */
     public void replaceNucleotidesInGenome(String oldSequence, String newSequence, int genomePosition) {
+        if (oldSequence.length() != newSequence.length()) {
+            throw new RuntimeException("The nucleotide sequences must be the same length, so that the " +
+                    "total length of the nucleotide sequence is not changed.");
+        }
+
         String identifier = genomeList.get(genomePosition).getIdentifier();
         String toReplace = genomeList.get(genomePosition).getNucleotides();
         String replacedString = toReplace.replaceAll(oldSequence, newSequence);
@@ -290,5 +321,4 @@ public class Alignment {
             genomeList.remove(g);
         }
     }
-
 }

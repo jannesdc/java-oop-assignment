@@ -1,7 +1,6 @@
 import Genetics.*;
 import Staff.*;
 
-import javax.sound.midi.SysexMessage;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Properties;
@@ -18,12 +17,21 @@ public class Main {
 
         Alignment hiv = new Alignment(genomeArrayList);
         System.out.println(hiv.score());
-        System.out.println(hiv.printGenome(0));
-        hiv.removeGenomes(">1990.U.CD.90.90CD121E12");
-        System.out.println(hiv.printGenome(0));
 
-        Alignment SNPhiv = new Alignment(hiv.snpAlign());
-        System.out.println(SNPhiv.score());
+        SNPAlignment hivSNP = hiv.snpAlign();
+        System.out.println(hivSNP.score());
+        System.out.println(hivSNP.score());
+        for (int i = 0; i < 2; i++) {
+            System.out.println(hivSNP.printGenome(i));
+        }
+
+        hivSNP.replaceGenome(hiv.getGenome(10), 1);
+
+        for (int i = 0; i < 2; i++) {
+            System.out.println(hivSNP.printGenome(i));
+        }
+
+
 
     }
 
