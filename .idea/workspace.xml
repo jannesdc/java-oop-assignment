@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8b7ca82c-3d72-4409-9d81-31e57870a8b2" name="Changes" comment="fix: removeGenomes now works without errors">
-      <change afterPath="$PROJECT_DIR$/src/Genetics/SNPAlignment.java" afterDir="false" />
+    <list default="true" id="8b7ca82c-3d72-4409-9d81-31e57870a8b2" name="Changes" comment="feature:  new class SNPAlignment">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Genetics/Alignment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Genetics/Alignment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Genetics/SNPAlignment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Genetics/SNPAlignment.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -149,7 +147,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668332056991</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="feature:  new class SNPAlignment">
+      <created>1668430107879</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1668430107879</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -175,7 +180,8 @@
     <MESSAGE value="feature: addGenome method for Alignment" />
     <MESSAGE value="feature: removeGenome methods for Alignment" />
     <MESSAGE value="fix: removeGenomes now works without errors" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: removeGenomes now works without errors" />
+    <MESSAGE value="feature:  new class SNPAlignment" />
+    <option name="LAST_COMMIT_MESSAGE" value="feature:  new class SNPAlignment" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

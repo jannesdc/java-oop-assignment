@@ -120,6 +120,16 @@ public class SNPAlignment extends Alignment{
     }
 
     /**
+     * Allows alignments to be changed back and forth between standard and SNiP by using this method and {@code snpAlign()}
+     *
+     * @return Standard alignment of SNiP alignment
+     */
+    public Alignment STDAlign() {
+       Alignment myAlignment = new Alignment(this.genomeList, referenceGenomePosition);
+       return myAlignment;
+    }
+
+    /**
      * First replaceGenome method (overloaded) that takes a genome as a parameter to replace the current genome at genomePosition.
      *
      * @param genome         {@code Genome} that will replace the current {@code Genome} at {@code genomePosition}
