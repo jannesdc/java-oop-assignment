@@ -16,9 +16,30 @@ public class Main {
         ArrayList<Genome> genomeArrayList = readFastaFile(fastaFile);
 
         Alignment hiv = new Alignment(genomeArrayList);
-        System.out.println(hiv.score());
+
+        for (Employee e : employeeArrayList) {
+            if (e instanceof Bioinformatician) {
+                ((Bioinformatician) e).setPersonalAlignment(hiv);
+            }
+        }
+
+        Bioinformatician marc = (Bioinformatician) employeeArrayList.get(1);
+        System.out.println(marc.getPersonalAlignment().printGenome(0));
+        System.out.println(marc.getPersonalAlignment().printGenome(1));
 
         SNPAlignment hivSNP = hiv.snpAlign();
+
+        marc.setPersonalAlignment(hivSNP);
+        System.out.println(marc.getPersonalAlignment().printGenome(0));
+        System.out.println(marc.getPersonalAlignment().printGenome(1));
+
+
+        /*
+        System.out.println(hiv.score());
+
+
+
+
         System.out.println(hivSNP.score());
         System.out.println(hivSNP.score());
         for (int i = 0; i < 2; i++) {
@@ -30,8 +51,7 @@ public class Main {
         for (int i = 0; i < 2; i++) {
             System.out.println(hivSNP.printGenome(i));
         }
-
-
+        */
 
     }
 
