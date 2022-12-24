@@ -133,7 +133,7 @@ public class SNPAlignment extends Alignment{
      *
      * @return Standard alignment of SNiP alignment
      */
-    public Alignment STDAlign() {
+    public Alignment stdAlign() {
        Alignment myAlignment = new Alignment(this.genomeList, referenceGenomePosition);
        return myAlignment;
     }

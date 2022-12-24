@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8b7ca82c-3d72-4409-9d81-31e57870a8b2" name="Changes" comment="feature: started implementing personal Alignments for Bioinformatician">
-      <change afterPath="$PROJECT_DIR$/src/Genetics/AlignmentRepository.java" afterDir="false" />
+    <list default="true" id="8b7ca82c-3d72-4409-9d81-31e57870a8b2" name="Changes" comment="feature: lotsa features init">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Genetics/Alignment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Genetics/Alignment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Genetics/Genome.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Genetics/Genome.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Genetics/SNPAlignment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Genetics/SNPAlignment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/HelperClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HelperClass.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Staff/Bioinformatician.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Staff/Bioinformatician.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Staff/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Staff/Employee.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -175,7 +171,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670714197763</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="feature: lotsa features init">
+      <created>1671896394991</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1671896394991</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -204,7 +207,8 @@
     <MESSAGE value="feature:  new class SNPAlignment" />
     <MESSAGE value="feature: method to change SNP alignment back to Standard alignment" />
     <MESSAGE value="feature: started implementing personal Alignments for Bioinformatician" />
-    <option name="LAST_COMMIT_MESSAGE" value="feature: started implementing personal Alignments for Bioinformatician" />
+    <MESSAGE value="feature: lotsa features init" />
+    <option name="LAST_COMMIT_MESSAGE" value="feature: lotsa features init" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
