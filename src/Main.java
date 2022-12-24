@@ -2,21 +2,48 @@ import Genetics.*;
 import Staff.*;
 
 import java.io.*;
+import java.sql.Array;
 import java.util.ArrayList;
 import java.util.Properties;
 import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
 
+        // Note: All comments in the different java classes are created in javadoc for ease of use.
+        //       Only in the main class is this type of comment used.
+
+        // First we read the config file, which gets the paths to the specified team and employee file.
         String[] configEntries = readConfig();
+        // Next we create two File objects for the team and the fasta file, so these can be scanned.
         File teamFile = new File("src\\" + configEntries[0]);
         File fastaFile = new File("src\\" + configEntries[1]);
-
+        // We scan the team file to create employeeArrayList for this we use the readTeamFile method.
         ArrayList<Employee> employeeArrayList = readTeamFile(teamFile);
+        System.out.println("Employees of the bioinformatics team:");
+        for (Employee e : employeeArrayList) {
+            System.out.println(
+                    employeeArrayList.indexOf(e) + " - " + e.getFullName() + " - " + e.getClass().getSimpleName());
+        }
+        System.out.println("\n\n");
+        // For ease later on we create a separate list of bioinformaticians, which we will later populate.
+        ArrayList<Bioinformatician> bioinformaticianArrayList = new ArrayList<>();
+        // We also scan the fasta file for all Genomes so that an alignment can be created.
         ArrayList<Genome> genomeArrayList = readFastaFile(fastaFile);
 
+        // The alignment for hiv is created here once, and we create the repository based the alignment we just created.
         Alignment hiv = new Alignment(genomeArrayList);
+        AlignmentRepository repo = new AlignmentRepository(hiv);
+        // Now we populate bioinformatician ArrayList and their personal alignments.
+        for (Employee e : employeeArrayList) {
+            if (e.getClass() == Bioinformatician.class) {
+                bioinformaticianArrayList.add((Bioinformatician) e);
+                ((Bioinformatician) e).setPersonalAlignment(repo);
+            }
+        }
 
+
+        /*
         for (Employee e : employeeArrayList) {
             if (e instanceof Bioinformatician) {
                 ((Bioinformatician) e).setPersonalAlignment(hiv);
@@ -33,12 +60,7 @@ public class Main {
         System.out.println(marc.getPersonalAlignment().printGenome(0));
         System.out.println(marc.getPersonalAlignment().printGenome(1));
 
-
-        /*
         System.out.println(hiv.score());
-
-
-
 
         System.out.println(hivSNP.score());
         System.out.println(hivSNP.score());

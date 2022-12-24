@@ -2,8 +2,13 @@ package Genetics;
 
 public class Genome implements Cloneable {
 
-    // variable declarations
+    /**
+     * String that represtents the name/identifier of a genome.
+     */
     String identifier;
+    /**
+     * String that represents the sequence of all nucleotides of a genome.
+     */
     String nucleotides;
 
     /**

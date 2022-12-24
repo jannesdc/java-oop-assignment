@@ -1,16 +1,28 @@
 package Genetics;
 
+import Staff.Bioinformatician;
+
 import java.util.ArrayList;
 
 public class SNPAlignment extends Alignment{
 
+    /**
+     * ArrayList of all Genome objects in the alignment. All genomes are in the SNiP format except the reference genome.
+     */
     private ArrayList<Genome> genomeListSNP;
 
-    public SNPAlignment(Alignment alignment,ArrayList<Genome> genomeList) {
+    /**
+     * Constructor for an SNPAlignment object, it is protected so that it is not possible to create an SNP alignment directly,
+     * Instead the method {@code snpAlign} of an Alignment class object is to be used to create an SNPAlignment.
+     * @param alignment Alignment object for which the corresponding SNP Alignment is created.
+     * @param genomeList an ArrayList of all genomes in SNP format as compared to the referenceGenome.
+     */
+    protected SNPAlignment(Alignment alignment,ArrayList<Genome> genomeList) {
         this.genomeList = alignment.getGenomeList();
         this.referenceGenomePosition = alignment.getReferenceGenomePosition();
         this.referenceGenome = alignment.genomeList.get(referenceGenomePosition);
         this.genomeListSNP = genomeList;
+        this.associatedEmployee = (Bioinformatician) alignment.getAssociatedEmployee();
     }
 
     /**
@@ -73,19 +85,16 @@ public class SNPAlignment extends Alignment{
         return differenceScore;
     }
 
-
-
     /**
-     * Returns the identifier and nucleotide sequence as Strings of a genome which is defined by the method parameter
+     * Prints the identifier and nucleotide sequence as Strings of a genome which is defined by the method parameter
      * genomePosition.
      *
      * @param genomePosition The position (Integer) of which genome out of the {@code genomeList} that needs to be
-     *                       returned.
-     * @return The identifier and nucleotide sequence over two lines
+     *                       printed.
      */
     @Override
-    public String printGenome(int genomePosition) {
-        return genomeListSNP.get(genomePosition).toString();
+    public void printGenome(int genomePosition) {
+        System.out.println(genomeListSNP.get(genomePosition).toString());
     }
 
     /**

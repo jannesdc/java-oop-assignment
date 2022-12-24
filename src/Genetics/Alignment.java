@@ -1,14 +1,31 @@
 package Genetics;
 
+import Staff.Bioinformatician;
+import Staff.Employee;
+
 import java.util.ArrayList;
 
-public class Alignment {
+public class Alignment implements Cloneable {
 
     // variable declaration
 
+    /**
+     * ArrayList that contains all Genomes of an Alignment object
+     */
     ArrayList<Genome> genomeList;
+    /**
+     * Integer for the position in the genomeList that is used as the referenceGenome
+     */
     int referenceGenomePosition;
+    /**
+     * Genome object that is used as a reference genome to calculate the alignment score and SNP alignments.
+     */
     Genome referenceGenome;
+
+    /**
+     * This variable is used to track which employee is associated with the certain Alignment.
+     */
+    Staff.Bioinformatician associatedEmployee;
 
     /**
      * First constructor of an {@code Alignment} in which the reference genome is the first genome in the
@@ -36,7 +53,21 @@ public class Alignment {
     }
 
     /**
-     * Constructor method that makes the constructor of SNPAlignment possible. It is made protected, so it can only be
+     * Clone constructor method, to be used when an alignment needs to be deep cloned.
+     * @param alignmentToCopy - Alignment that will be cloned.
+     */
+    public Alignment(Alignment alignmentToCopy) {
+        ArrayList<Genome> copyGenomeList = new ArrayList<>();
+        this.referenceGenomePosition = alignmentToCopy.getReferenceGenomePosition();
+        this.referenceGenome = (Genome) alignmentToCopy.getReferenceGenome().clone();
+        for (Genome g : alignmentToCopy.genomeList) {
+            copyGenomeList.add((Genome) g.clone());
+        }
+        this.genomeList = copyGenomeList;
+    }
+
+    /**
+     * Special constructor method that makes the constructor of SNPAlignment possible. It is made protected, so it can only be
      * accessed from its subtype SNPAlignment.
      */
     protected Alignment() {
@@ -63,8 +94,16 @@ public class Alignment {
         return referenceGenome;
     }
 
+    /**
+     * @param genomePosition position in the genomeList of the genome that is to be returned.
+     * @return Genome at the given genomePosition
+     */
     public Genome getGenome(int genomePosition) {
         return genomeList.get(genomePosition);
+    }
+
+    public Employee getAssociatedEmployee() {
+        return associatedEmployee;
     }
 
     /**
@@ -82,19 +121,34 @@ public class Alignment {
      */
     public void setReferenceGenomePosition(int newReferenceGenomePosition) {
         this.referenceGenomePosition = newReferenceGenomePosition;
-        this.referenceGenome = genomeList.get(newReferenceGenomePosition);
+        this.setReferenceGenome();
     }
 
     /**
-     * Returns the identifier and nucleotide sequence as Strings of a genome which is defined by the method parameter
+     * Called in other methods that could make changes to the reference genome.
+     * It replaces the current reference genome of the alignment to account for any changes made.
+     */
+    protected void setReferenceGenome() {
+        this.referenceGenome = genomeList.get(referenceGenomePosition);
+    }
+
+    /**
+     * Sets the employee that is associated with an Alignment. This employee has to be of a bioinformatician.
+     * @param associatedEmployee Employee type object that is associated with an alignment
+     */
+    public void setAssociatedEmployee(Bioinformatician associatedEmployee) {
+        this.associatedEmployee = associatedEmployee;
+    }
+
+    /**
+     * Prints the identifier and nucleotide sequence as Strings of a genome which is defined by the method parameter
      * genomePosition.
      *
      * @param genomePosition The position (Integer) of which genome out of the {@code genomeList} that needs to be
      *                       returned.
-     * @return The identifier and nucleotide sequence over two lines
      */
-    public String printGenome(int genomePosition) {
-        return genomeList.get(genomePosition).toString();
+    public void printGenome(int genomePosition) {
+       System.out.println(genomeList.get(genomePosition).toString());
     }
 
     /**
@@ -185,6 +239,9 @@ public class Alignment {
      */
     public void replaceGenome(Genome genome, int genomePosition) {
         genomeList.set(genomePosition, genome);
+        if (genomePosition == referenceGenomePosition) {
+            this.setReferenceGenome();
+        }
     }
 
     /**
@@ -198,6 +255,9 @@ public class Alignment {
     public void replaceGenome(String genomeIdentifier, String nucleotides, int genomePosition) {
         Genome replacementGenome = new Genome(genomeIdentifier, nucleotides);
         genomeList.set(genomePosition, replacementGenome);
+        if (genomePosition == referenceGenomePosition) {
+            this.setReferenceGenome();
+        }
     }
 
     /**
@@ -225,6 +285,7 @@ public class Alignment {
             Genome newGenome = new Genome(identifier, replacedString);
             genomeList.set(i, newGenome);
         }
+        this.setReferenceGenome();
     }
 
     /**
@@ -236,6 +297,7 @@ public class Alignment {
      * @param genomePosition the position of the genome where the replacement will occur
      */
     public void replaceNucleotidesInGenome(String oldSequence, String newSequence, int genomePosition) {
+
         if (oldSequence.length() != newSequence.length()) {
             throw new RuntimeException("The nucleotide sequences must be the same length, so that the " +
                     "total length of the nucleotide sequence is not changed.");
@@ -247,6 +309,10 @@ public class Alignment {
 
         Genome newGenome = new Genome(identifier, replacedString);
         genomeList.set(genomePosition, newGenome);
+
+        if (genomePosition == referenceGenomePosition) {
+            this.setReferenceGenome();
+        }
     }
 
     /**

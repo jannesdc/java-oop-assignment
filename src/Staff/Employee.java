@@ -18,8 +18,17 @@ package Staff;
  */
 public abstract class Employee {
 
+    /**
+     * String: First name of an employee.
+     */
     String firstName;
+    /**
+     * String: Last name of an employee
+     */
     String lastName;
+    /**
+     * Integer: Years of experience of an employee.
+     */
     int yearsOfExperience;
 
     /**
