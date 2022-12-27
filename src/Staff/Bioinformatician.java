@@ -34,6 +34,14 @@ public class Bioinformatician extends Employee {
     }
 
     /**
+     * Overloaded method that takes an alignment to set as personal alignment for this bioinformatician.
+     * @param alignment Alignment to set as new personal alignment.
+     */
+    public void setPersonalAlignment(Alignment alignment) {
+        this.personalAlignment = alignment;
+    }
+
+    /**
      * @return The personal alignment of a bioinformatician.
      */
     public Alignment getPersonalAlignment() {
@@ -54,6 +62,15 @@ public class Bioinformatician extends Employee {
      */
     public void printGenome(int genomePosition) {
         personalAlignment.printGenome(genomePosition);
+    }
+
+    /**
+     * Returns the Genome at position genomePosition from the personal alignment.
+     * @param genomePosition Position of the genome in alignment that needs to be returned.
+     * @return The genome at genomePosition
+     */
+    public Genome getGenome(int genomePosition) {
+        return personalAlignment.getGenome(genomePosition);
     }
 
     /**

@@ -25,6 +25,22 @@ public class AlignmentRepository {
     }
 
     /**
+     * Copy constructor method for an alignment repository, this method will make a deep clone of a repository.
+     * @param repositoryToCopy Repository that will be copied
+     */
+    public AlignmentRepository(AlignmentRepository repositoryToCopy) {
+        ArrayList<Alignment> copyAlignmentArrayList = new ArrayList<>();
+        Alignment copyAlignment;
+        SNPAlignment copySNPAlignment = repositoryToCopy.getOptimalAlignment().snpAlign();
+        for (Alignment a : repositoryToCopy.alignmentArrayList) {
+            copyAlignment = new Alignment(a);
+            copyAlignmentArrayList.add(copyAlignment);
+        }
+        this.alignmentArrayList = copyAlignmentArrayList;
+        this.optimalSNPAlignment = copySNPAlignment;
+    }
+
+    /**
      * Second constructor method, which creates an empty repository so that it can be filled later using the
      * {@code setOptimalAlignment()} method later on.
      */
@@ -42,6 +58,23 @@ public class AlignmentRepository {
     }
 
     /**
+     * Method that returns the SNiP alignment for the current optimal alignment.
+     * @return SNPAlignment for current optimal alignment.
+     */
+    public SNPAlignment getOptimalSNPAlignment() {
+        this.setOptimalSNPAlignment();
+        return optimalSNPAlignment;
+    }
+
+    /**
+     * Returns all the alignments in the repository as an ArrayList.
+     * @return ArrayList of all alignments in the repository.
+     */
+    public ArrayList<Alignment> getAlignmentArrayList() {
+        return alignmentArrayList;
+    }
+
+    /**
      * Method to recalculate the SNPAlignment of the current optimal alignment. To be used when the
      * optimal alignment is changed.
      */
@@ -55,7 +88,8 @@ public class AlignmentRepository {
      * @param alignment
      */
     public void setOptimalAlignment(Alignment alignment) {
-        this.alignmentArrayList.add(0, alignment);
+        this.alignmentArrayList.remove(0);
+        this.alignmentArrayList.add(0,alignment);
         setOptimalSNPAlignment();
     }
 

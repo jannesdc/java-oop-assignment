@@ -64,6 +64,7 @@ public class Alignment implements Cloneable {
             copyGenomeList.add((Genome) g.clone());
         }
         this.genomeList = copyGenomeList;
+        this.associatedEmployee = (Bioinformatician) alignmentToCopy.getAssociatedEmployee();
     }
 
     /**
