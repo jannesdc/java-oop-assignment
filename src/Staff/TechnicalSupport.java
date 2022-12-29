@@ -49,4 +49,13 @@ public class TechnicalSupport extends Employee {
         }
         throw new RuntimeException("This technical support employee has no stored backups.");
     }
+
+    /**
+     * Removes all data from a repository.
+     * @param repository Repository that will be cleared.
+     */
+    public void clearRepository(AlignmentRepository repository) {
+        repository.setOptimalAlignment(null);
+        repository.getAlignmentArrayList().clear();
+    }
 }

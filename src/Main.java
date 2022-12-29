@@ -2,11 +2,10 @@ import Genetics.*;
 import Staff.*;
 
 import java.io.*;
-import java.sql.Array;
 import java.util.ArrayList;
 import java.util.Properties;
 import java.util.Scanner;
-import java.util.concurrent.SynchronousQueue;
+
 
 public class Main {
     public static void main(String[] args) {
@@ -14,18 +13,18 @@ public class Main {
         // Note: All comments in the different java classes are created in javadoc for ease of use.
         //       Only in the main class is this type of comment used.
 
-        // First we read the config file, which gets the paths to the specified team and employee file.
+        // First I read the config file, which gets the paths to the specified team and employee file.
         System.out.println("----Initializing System----\n ");
         String[] configEntries = readConfig();
         System.out.println("1. Configuration file read successfully.");
 
-        // Next we create two File objects for the team and the fasta file, so these can be scanned.
+        // Next I create two File objects for the team and the fasta file, so these can be scanned.
         File teamFile = new File("src\\" + configEntries[0]);
         System.out.println("2. Team file read successfully");
         File fastaFile = new File("src\\" + configEntries[1]);
         System.out.println("3. Fasta file read successfully.\n\n");
 
-        // We scan the team file to create employeeArrayList for this we use the readTeamFile method.
+        // I scan the team file to create employeeArrayList for this I use the readTeamFile method.
         ArrayList<Employee> employeeArrayList = readTeamFile(teamFile);
         System.out.println("Employees of the bioinformatics team:");
         for (Employee e : employeeArrayList) {
@@ -34,15 +33,15 @@ public class Main {
         }
         System.out.println("\n");
 
-        // For ease later on we create a separate list of each employee type, which we will later populate.
+        // For ease later on I create a separate list of each employee type, which I will later populate.
         ArrayList<Bioinformatician> bioinformaticianArrayList = new ArrayList<>();
         ArrayList<TeamLead> teamLeadArrayList = new ArrayList<>();
         ArrayList<TechnicalSupport> technicalSupportArrayList = new ArrayList<>();
-        // We also scan the fasta file for all Genomes so that an alignment can be created.
+        // I also scan the fasta file for all Genomes so that an alignment can be created.
         System.out.println("Converting raw data from fasta file into genomes...");
         ArrayList<Genome> genomeArrayList = readFastaFile(fastaFile);
 
-        // The alignment for hiv is created here once, and we create the repository based the alignment we just created.
+        // The alignment for hiv is created here once, and I create the repository based the alignment I just created.
         System.out.println("Creating initial alignment...");
         Alignment hiv = new Alignment(genomeArrayList);
         System.out.println("Starting alignment successfully created.");
@@ -50,7 +49,7 @@ public class Main {
         AlignmentRepository repo = new AlignmentRepository(hiv);
         System.out.println("Alignment repository successfully created.\n");
 
-        // Now we populate bioinformatician ArrayList and their personal alignments.
+        // Now I populate bioinformatician ArrayList and their personal alignments.
         System.out.println("Setting the initial alignment as the personal alignment for each bioinformatician...");
         for (Employee e : employeeArrayList) {
             if (e.getClass() == Bioinformatician.class) {
@@ -75,15 +74,15 @@ public class Main {
         }
         System.out.println("All alignments have successfully been added to repository.\n");
 
-        // We print a few genomes from the starting alignment.
+        // I print a few genomes from the starting alignment.
         System.out.println("Printing first 5 genomes from the starting standard alignment:");
         for (int i = 0; i < 5; i++) {
             repo.getOptimalAlignment().printGenome(i);
         }
-        // Then we get the difference score of the starting alignment.
+        // Then I get the difference score of the starting alignment.
         System.out.println("\nDifference score for current (starting) optimal standard alignment: "
                 + repo.getOptimalAlignment().score());
-        // We can also print the first genomes of the SNiP alignment.
+        // I can also print the first genomes of the SNiP alignment.
         System.out.println("\nPrinting first 5 genomes from the starting SNiP alignment:");
         for (int i = 0; i < 5; i++) {
             repo.getOptimalSNPAlignment().printGenome(i);
@@ -91,7 +90,7 @@ public class Main {
         System.out.println("\nDifference score for current (starting) optimal SNiP alignment: "
                 + repo.getOptimalSNPAlignment().score());
 
-        // We can now start making changes to each of the bioinformaticians personal alignments.
+        // I can now start making changes to each of the bioinformaticians personal alignments.
         System.out.println("\n\nDifference score of " + bioinformaticianArrayList.get(1) + "'s current alignment: "
                 + bioinformaticianArrayList.get(1).getPersonalAlignment().score());
         System.out.println("Changing all occurrences of nucleotide sequence \"TGTCC\" to \"TTTCC\" in "
@@ -157,6 +156,39 @@ public class Main {
             System.out.println(b.getPersonalAlignment().getAssociatedEmployee() + "'s alignment: " + b.getPersonalAlignment().score());
         }
 
+        // Testing search function
+        System.out.println("\nSearching for all genomes containing \"ACTGACAA\" nucleotide sequence in " + bioinformaticianArrayList.get(1) + "'s alignment...");
+        ArrayList<Genome> search1 = bioinformaticianArrayList.get(1).searchNucleotideSequence("ACTGACAA");
+        System.out.println(search1.size() + " genomes found, printing:");
+        for (Genome g : search1) {
+            System.out.println(g);
+        }
+
+        // Changing the reference genome to the 3rd genome instead of the 1st in all personal alignments.
+        System.out.println("\nChanging reference genome to 3rd genome in all personal alignments...");
+        System.out.println("Difference score of each bioinformatician's personal alignment:");
+        for (Bioinformatician b : bioinformaticianArrayList) {
+            b.getPersonalAlignment().setReferenceGenomePosition(2);
+            System.out.println(b.getPersonalAlignment().getAssociatedEmployee() + "'s alignment: " + b.getPersonalAlignment().score());
+        }
+        System.out.println("\nChanging reference genome back to 1st genome...");
+        for (Bioinformatician b : bioinformaticianArrayList) {
+            b.getPersonalAlignment().setReferenceGenomePosition(0);
+        }
+
+        // Writing data file for Marc Janssens.
+        System.out.println("\nCreating data file for " + bioinformaticianArrayList.get(0) + "'s alignment...");
+        bioinformaticianArrayList.get(0).writeDataToFile();
+        // Writing report file for Marc Janssens.
+        System.out.println("\nCreating report file for " + bioinformaticianArrayList.get(0) + "'s alignment...");
+        bioinformaticianArrayList.get(0).writeReportToFile();
+
+        // Writing data file for team lead Jozef Groenewegen.
+        System.out.println("\nCreating data file for " + teamLeadArrayList.get(0) + ".");
+        teamLeadArrayList.get(0).writeDataToFile(repo);
+        // Writing report file for team lead Jozef Groenewegen.
+        System.out.println("\nCreating report file for " + teamLeadArrayList.get(0) + ".");
+        teamLeadArrayList.get(0).writeReportToFile(repo);
     }
 
     // method that reads the config.properties file and returns an Array that contains all relevant properties

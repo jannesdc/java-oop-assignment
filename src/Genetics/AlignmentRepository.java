@@ -90,7 +90,12 @@ public class AlignmentRepository {
     public void setOptimalAlignment(Alignment alignment) {
         this.alignmentArrayList.remove(0);
         this.alignmentArrayList.add(0,alignment);
-        setOptimalSNPAlignment();
+        if (alignment != null) {
+            setOptimalSNPAlignment();
+        } else {
+            this.optimalSNPAlignment = null;
+        }
+
     }
 
     /**

@@ -4,6 +4,10 @@ import Genetics.Alignment;
 import Genetics.AlignmentRepository;
 import Genetics.Genome;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 public class Bioinformatician extends Employee {
@@ -80,6 +84,54 @@ public class Bioinformatician extends Employee {
      */
     public int alignmentScore() {
         return personalAlignment.score();
+    }
+
+    /**
+     * Method that creates a new text file where it writes all the genomes of this bioinformatician's personal alignment.
+     */
+    public void writeDataToFile() {
+        try {
+            File dataFile = new File(this.getFullName() + ".alignment.txt");
+            if (dataFile.createNewFile()) {
+                System.out.println("Data file created: " + dataFile.getName());
+                FileWriter writer = new FileWriter(dataFile.getPath());
+                for (Genome g : this.getPersonalAlignment().getGenomeList()) {
+                    writer.write(g.getIdentifier());
+                    writer.write("\n");
+                    writer.write(g.getNucleotides());
+                    writer.write("\n");
+                }
+                writer.close();
+                System.out.println("Alignment data was successfully written to data file.");
+            } else {
+                System.out.println("File already exists.");
+            }
+        } catch (IOException e) {
+            System.out.println("Error occurred creating data file.");
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Method that creates a new text file where it writes the difference score of this bioinformatician's personal
+     * alignment.
+     */
+    public void writeReportToFile() {
+        try {
+            File dataFile = new File(this.getFullName() + ".score.txt");
+            if (dataFile.createNewFile()) {
+                System.out.println("Report file created: " + dataFile.getName());
+                PrintWriter writer = new PrintWriter(dataFile.getPath());
+                writer.write(((Integer) this.getPersonalAlignment().score()).toString());
+                writer.close();
+                System.out.println("Data was successfully written to report file.");
+            } else {
+                System.out.println("File already exists.");
+            }
+        } catch (IOException e) {
+            System.out.println("Error occurred creating report file.");
+            e.printStackTrace();
+        }
     }
 
     /**
