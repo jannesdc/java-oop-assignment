@@ -107,9 +107,6 @@ public class Alignment{
      * @return Employee associated with the alignment
      */
     public Employee getAssociatedEmployee() {
-        if (associatedEmployee == null) {
-            throw new IllegalStateException("No associated employee found.");
-        }
         return associatedEmployee;
     }
 

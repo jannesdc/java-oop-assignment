@@ -4,17 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8b7ca82c-3d72-4409-9d81-31e57870a8b2" name="Changes" comment="New error handling for the readTeamFile method">
-      <change afterPath="$PROJECT_DIR$/src/Util/ConfigReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="8b7ca82c-3d72-4409-9d81-31e57870a8b2" name="Changes" comment="Error handling and Util+Main Package">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Genetics/Alignment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Genetics/Alignment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Genetics/AlignmentRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Genetics/AlignmentRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Genetics/SNPAlignment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Genetics/SNPAlignment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Staff/Bioinformatician.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Staff/Bioinformatician.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Staff/TeamLead.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Staff/TeamLead.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Staff/TechnicalSupport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Staff/TechnicalSupport.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Util/ConfigReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Util/ConfigReader.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -246,7 +239,15 @@
       <option name="project" value="LOCAL" />
       <updated>1672327396875</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Error handling and Util+Main Package">
+      <option name="closed" value="true" />
+      <created>1691595038205</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1691595038205</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -283,7 +284,8 @@
     <MESSAGE value="add eclipse .project and .classpath" />
     <MESSAGE value="remove HelperClass.java" />
     <MESSAGE value="code reformat" />
-    <option name="LAST_COMMIT_MESSAGE" value="code reformat" />
+    <MESSAGE value="Error handling and Util+Main Package" />
+    <option name="LAST_COMMIT_MESSAGE" value="Error handling and Util+Main Package" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

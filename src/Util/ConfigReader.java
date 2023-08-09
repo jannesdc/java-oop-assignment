@@ -13,12 +13,15 @@ import java.util.Scanner;
 
 public class ConfigReader {
 
-    // method that reads the config.properties file and returns an Array that contains all relevant properties
+    /**
+     * Reads the config.properties file and extracts the relevant properties.
+     * @return Array that contains the links to the team file and fasta file
+     */
     public static String[] readConfig() {
 
         // variable declaration
         Properties prop = new Properties();
-        InputStream config = null;
+        InputStream config;
         String[] configEntries = new String[2];
 
         try {
@@ -45,6 +48,12 @@ public class ConfigReader {
         return configEntries;
     }
 
+    /**
+     * Reads the provided team file and returns a list of all the employees.
+     * @param teamFile file to be parsed for the team members
+     * @return List of all the employees
+     * @throws FileNotFoundException
+     */
     public static ArrayList<Employee> readTeamFile(File teamFile) throws FileNotFoundException {
 
         ArrayList<Employee> employeeList = new ArrayList<Employee>();
@@ -90,6 +99,12 @@ public class ConfigReader {
         return employeeList;
     }
 
+    /**
+     * Reads the provided fasta file.
+     * @param fastaFile Fasta file to be parsed for the genomes
+     * @return List of all the genomes found in the fasta file
+     * @throws FileNotFoundException
+     */
     public static ArrayList<Genome> readFastaFile(File fastaFile) throws FileNotFoundException {
 
         String identifier;
