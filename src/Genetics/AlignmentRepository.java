@@ -8,7 +8,7 @@ public class AlignmentRepository {
      * ArrayList that stores all alignments of the department. At position 0 the optimal alignment is stored.
      * The alignments of the different bioinformaticians are stored in the rest of the ArrayList.
      */
-    private ArrayList<Alignment> alignmentArrayList = new ArrayList<>();
+    private ArrayList<Alignment> alignmentList = new ArrayList<>();
     /**
      * SNP version of the optimal alignment.
      */
@@ -20,7 +20,7 @@ public class AlignmentRepository {
      * @param startingAlignment First alignment
      */
     public AlignmentRepository(Alignment startingAlignment) {
-        alignmentArrayList.add(0, startingAlignment);
+        alignmentList.add(0, startingAlignment);
         this.optimalSNPAlignment = this.getOptimalAlignment().snpAlign();
     }
 
@@ -29,22 +29,15 @@ public class AlignmentRepository {
      * @param repositoryToCopy Repository that will be copied
      */
     public AlignmentRepository(AlignmentRepository repositoryToCopy) {
-        ArrayList<Alignment> copyAlignmentArrayList = new ArrayList<>();
+        ArrayList<Alignment> copyAlignmentList = new ArrayList<>();
         Alignment copyAlignment;
         SNPAlignment copySNPAlignment = repositoryToCopy.getOptimalAlignment().snpAlign();
-        for (Alignment a : repositoryToCopy.alignmentArrayList) {
+        for (Alignment a : repositoryToCopy.alignmentList) {
             copyAlignment = new Alignment(a);
-            copyAlignmentArrayList.add(copyAlignment);
+            copyAlignmentList.add(copyAlignment);
         }
-        this.alignmentArrayList = copyAlignmentArrayList;
+        this.alignmentList = copyAlignmentList;
         this.optimalSNPAlignment = copySNPAlignment;
-    }
-
-    /**
-     * Second constructor method, which creates an empty repository so that it can be filled later using the
-     * {@code setOptimalAlignment()} method later on.
-     */
-    public AlignmentRepository() {
     }
 
     /**
@@ -54,7 +47,7 @@ public class AlignmentRepository {
      * @return The current optimal Alignment.
      */
     public Alignment getOptimalAlignment() {
-        return alignmentArrayList.get(0);
+        return alignmentList.get(0);
     }
 
     /**
@@ -70,8 +63,8 @@ public class AlignmentRepository {
      * Returns all the alignments in the repository as an ArrayList.
      * @return ArrayList of all alignments in the repository.
      */
-    public ArrayList<Alignment> getAlignmentArrayList() {
-        return alignmentArrayList;
+    public ArrayList<Alignment> getAlignmentList() {
+        return alignmentList;
     }
 
     /**
@@ -85,17 +78,16 @@ public class AlignmentRepository {
     /**
      * Method that sets the optimal alignment in the repository to the given alignment, also recalculates the
      * SNP alignment for the optimal alignment.
-     * @param alignment
+     * @param alignment Alignment that will be the  new optimal alignment.
      */
     public void setOptimalAlignment(Alignment alignment) {
-        this.alignmentArrayList.remove(0);
-        this.alignmentArrayList.add(0,alignment);
+        this.alignmentList.remove(0);
+        this.alignmentList.add(0,alignment);
         if (alignment != null) {
             setOptimalSNPAlignment();
         } else {
             this.optimalSNPAlignment = null;
         }
-
     }
 
     /**
@@ -104,7 +96,7 @@ public class AlignmentRepository {
      * @param newAlignment Alignment that is to be added to the repository.
      */
     public void addAlignmentToRepo(Alignment newAlignment) {
-        this.alignmentArrayList.add(newAlignment);
+        this.alignmentList.add(newAlignment);
     }
 }
 

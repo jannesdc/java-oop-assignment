@@ -1,10 +1,11 @@
+package Main;
+
 import Genetics.*;
 import Staff.*;
+import Util.*;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Properties;
-import java.util.Scanner;
 
 
 public class Main {
@@ -15,7 +16,7 @@ public class Main {
 
         // First I read the config file, which gets the paths to the specified team and employee file.
         System.out.println("----Initializing System----\n ");
-        String[] configEntries = readConfig();
+        String[] configEntries = ConfigReader.readConfig();
         System.out.println("1. Configuration file read successfully.");
 
         // Next I create two File objects for the team and the fasta file, so these can be scanned.
@@ -25,7 +26,12 @@ public class Main {
         System.out.println("3. Fasta file read successfully.\n\n");
 
         // I scan the team file to create employeeArrayList for this I use the readTeamFile method.
-        ArrayList<Employee> employeeArrayList = readTeamFile(teamFile);
+        ArrayList<Employee> employeeArrayList;
+        try {
+            employeeArrayList = ConfigReader.readTeamFile(teamFile);
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
         System.out.println("Employees of the bioinformatics team:");
         for (Employee e : employeeArrayList) {
             System.out.println(
@@ -39,7 +45,12 @@ public class Main {
         ArrayList<TechnicalSupport> technicalSupportArrayList = new ArrayList<>();
         // I also scan the fasta file for all Genomes so that an alignment can be created.
         System.out.println("Converting raw data from fasta file into genomes...");
-        ArrayList<Genome> genomeArrayList = readFastaFile(fastaFile);
+        ArrayList<Genome> genomeArrayList = null;
+        try {
+            genomeArrayList = ConfigReader.readFastaFile(fastaFile);
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
 
         // The alignment for hiv is created here once, and I create the repository based the alignment I just created.
         System.out.println("Creating initial alignment...");
@@ -65,9 +76,9 @@ public class Main {
                 technicalSupportArrayList.add((TechnicalSupport) e);
             }
         }
+        System.out.println("All starting personal alignments successfully initialized.\n");
 
         // The personal alignments are added to the repository.
-        System.out.println("All starting personal alignments successfully initialized.\n");
         System.out.println("Adding alignments to repository...");
         for (Bioinformatician b : bioinformaticianArrayList) {
             repo.addAlignmentToRepo(b.getPersonalAlignment());
@@ -189,105 +200,5 @@ public class Main {
         // Writing report file for team lead Jozef Groenewegen.
         System.out.println("\nCreating report file for " + teamLeadArrayList.get(0) + ".");
         teamLeadArrayList.get(0).writeReportToFile(repo);
-    }
-
-    // method that reads the config.properties file and returns an Array that contains all relevant properties
-    static String[] readConfig() {
-
-        // variable declaration
-        Properties prop = new Properties();
-        InputStream config = null;
-        String[] configEntries = new String[2];
-
-        try {
-            config = new FileInputStream("src\\config.properties");
-            // load properties file located in src folder
-            prop.load(config);
-            if (prop.getProperty("teamfilename").equals("")) {
-                // throw exception if no team file was provided in the config
-                throw new RuntimeException("No team file was provided in the config.properties file please " +
-                        "make sure a team file is specified. ");
-            } else {
-                configEntries[0] = (prop.getProperty("teamfilename"));
-            }
-            if (prop.getProperty("fastafilename").equals("")) {
-                // throw exception if no team file was provided in the config
-                throw new RuntimeException("No fasta file was provided in the config.properties file, " +
-                        "please make sure the fasta file are specified.");
-            } else {
-                configEntries[1] = prop.getProperty("fastafilename");
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return configEntries;
-    }
-
-    static ArrayList<Employee> readTeamFile(File teamFile) {
-
-        ArrayList<Employee> employeeArrayList = new ArrayList<Employee>();
-        String firstName;
-        String lastName;
-        int yearsOfExperience;
-        Employee newEmployee;
-
-        try {
-            Scanner sc = new Scanner(teamFile);
-
-            while (sc.hasNextLine()) {
-
-                switch (sc.next()) {
-                    case "TeamLead" -> {
-                        firstName = sc.next();
-                        lastName = sc.next();
-                        yearsOfExperience = Integer.parseInt(sc.next());
-                        newEmployee = new TeamLead(firstName, lastName, yearsOfExperience);
-                    }
-                    case "Bioinformatician" -> {
-                        firstName = sc.next();
-                        lastName = sc.next();
-                        yearsOfExperience = Integer.parseInt(sc.next());
-                        newEmployee = new Bioinformatician(firstName, lastName, yearsOfExperience);
-                    }
-                    case "TechnicalSupport" -> {
-                        firstName = sc.next();
-                        lastName = sc.next();
-                        yearsOfExperience = Integer.parseInt(sc.next());
-                        newEmployee = new TechnicalSupport(firstName, lastName, yearsOfExperience);
-                    }
-                    default -> newEmployee = null;
-                }
-                if (newEmployee == null) {
-
-                }
-                employeeArrayList.add(newEmployee);
-            }
-
-        } catch (FileNotFoundException e) {
-            System.out.println("Specified file was not found.");
-        }
-        return employeeArrayList;
-    }
-
-    static ArrayList<Genome> readFastaFile(File fastaFile) {
-
-        String identifier;
-        String nucleotide;
-        Genome newGenome;
-        ArrayList<Genome> genomeArrayList = new ArrayList<Genome>();
-
-        try {
-            Scanner sc = new Scanner(fastaFile);
-            while (sc.hasNext()) {
-                identifier = sc.next();
-                nucleotide = sc.next();
-                newGenome = new Genome(identifier, nucleotide);
-                genomeArrayList.add(newGenome);
-            }
-            sc.close();
-            return genomeArrayList;
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
     }
 }

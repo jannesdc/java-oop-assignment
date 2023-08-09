@@ -19,7 +19,7 @@ public class Bioinformatician extends Employee {
 
     /**
      * The constructor method for a bioinformatician does not populate their personal Alignment and is in
-     * essence the same as the constructor for a employee.
+     * essence the same as the constructor for an employee.
      * @param firstName First name of an employee
      * @param lastName Last name of an employee
      * @param yearsOfExperience Years of experience of an employee
@@ -27,7 +27,6 @@ public class Bioinformatician extends Employee {
     public Bioinformatician(String firstName, String lastName, int yearsOfExperience) {
         super(firstName, lastName, yearsOfExperience);
     }
-
 
     /**
      * Sets the personal alignment of a bioinformatician as the optimal alignment of a given repository.

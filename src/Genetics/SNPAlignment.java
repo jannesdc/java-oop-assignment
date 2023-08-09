@@ -54,7 +54,7 @@ public class SNPAlignment extends Alignment{
      * @param genomeList ArrayList of all the genomes in the alignment
      */
     @Override
-    public void setGenomeList(ArrayList<Genome> genomeList) {
+    void setGenomeList(ArrayList<Genome> genomeList) {
         super.setGenomeList(genomeList);
         this.adjustSNPAlignment();
     }

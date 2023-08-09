@@ -5,7 +5,7 @@ import Staff.Employee;
 
 import java.util.ArrayList;
 
-public class Alignment implements Cloneable {
+public class Alignment{
 
     // variable declaration
 
@@ -103,14 +103,20 @@ public class Alignment implements Cloneable {
         return genomeList.get(genomePosition);
     }
 
+    /**
+     * @return Employee associated with the alignment
+     */
     public Employee getAssociatedEmployee() {
+        if (associatedEmployee == null) {
+            throw new IllegalStateException("No associated employee found.");
+        }
         return associatedEmployee;
     }
 
     /**
      * @param genomeList ArrayList of all the genomes in the alignment
      */
-    public void setGenomeList(ArrayList<Genome> genomeList) {
+    void setGenomeList(ArrayList<Genome> genomeList) {
         this.genomeList = genomeList;
     }
 
@@ -209,8 +215,7 @@ public class Alignment implements Cloneable {
             }
             SNPGenomeList.get(i).setNucleotides(comparisonArray);
         }
-        SNPAlignment newSNPAlignment = new SNPAlignment(this,SNPGenomeList);
-        return newSNPAlignment;
+        return new SNPAlignment(this,SNPGenomeList);
     }
 
     /**

@@ -39,10 +39,10 @@ public class TeamLead extends Employee{
     public void copySharedToBioinformatician(Bioinformatician bioinformatician, AlignmentRepository repository) {
         Alignment alignmentToShare = new Alignment(repository.getOptimalAlignment());
         alignmentToShare.setAssociatedEmployee(bioinformatician);
-        for (int i = 1; i < repository.getAlignmentArrayList().size(); i++) {
-            Alignment a = repository.getAlignmentArrayList().get(i);
+        for (int i = 1; i < repository.getAlignmentList().size(); i++) {
+            Alignment a = repository.getAlignmentList().get(i);
             if (a.getAssociatedEmployee() == bioinformatician) {
-                repository.getAlignmentArrayList().set(i, alignmentToShare);
+                repository.getAlignmentList().set(i, alignmentToShare);
                 break;
             }
         }
@@ -60,7 +60,7 @@ public class TeamLead extends Employee{
                 System.out.println("Data file created: " + dataFile.getName());
                 FileWriter writer = new FileWriter(dataFile.getPath());
                 int i = 0;
-                for (Alignment a : repository.getAlignmentArrayList()) {
+                for (Alignment a : repository.getAlignmentList()) {
                     if (i == 0) {
                         i++;
                         continue;
@@ -96,7 +96,7 @@ public class TeamLead extends Employee{
                 System.out.println("Report file created: " + dataFile.getName());
                 FileWriter writer = new FileWriter(dataFile.getPath());
                 int i = 0;
-                for (Alignment a : repository.getAlignmentArrayList()) {
+                for (Alignment a : repository.getAlignmentList()) {
                     if (i == 0) {
                         i++;
                         continue;

@@ -1,7 +1,6 @@
 package Staff;
 
 import Genetics.AlignmentRepository;
-
 import java.util.ArrayList;
 
 public class TechnicalSupport extends Employee {
@@ -43,7 +42,7 @@ public class TechnicalSupport extends Employee {
      */
     public AlignmentRepository getRepositoryBackup(int positionBackupList) {
         if (repositoryBackups.size() != 0) {
-            for (Genetics.Alignment a : repositoryBackups.get(0).getAlignmentArrayList()) {
+            for (Genetics.Alignment a : repositoryBackups.get(0).getAlignmentList()) {
                 if (a.getAssociatedEmployee() != null) {
                     ((Bioinformatician) a.getAssociatedEmployee()).setPersonalAlignment(a);
                 }
@@ -60,6 +59,6 @@ public class TechnicalSupport extends Employee {
      */
     public void clearRepository(AlignmentRepository repository) {
         repository.setOptimalAlignment(null);
-        repository.getAlignmentArrayList().clear();
+        repository.getAlignmentList().clear();
     }
 }
